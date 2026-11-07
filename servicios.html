@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios | Colegio Horizonte</title>
+  <meta name="description" content="Servicios del Colegio Horizonte: programa bilingüe, tecnología, biblioteca, psicología, enfermería, comedor, transporte escolar, seguro y escuela para padres." />
+  <meta name="theme-color" content="#1b62f0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b62f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10 12 5 2 10l10 5 10-5Z'/%3E%3Cpath d='M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5'/%3E%3C/svg%3E" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- TailwindCSS (CDN para desarrollo). En producción se recomienda compilarlo. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef6ff', 100: '#d9eaff', 200: '#bcdcff', 300: '#8ec6ff',
+              400: '#59a5ff', 500: '#3282fb', 600: '#1b62f0', 700: '#144ee0',
+              800: '#1740b5', 900: '#193a8e', 950: '#142555',
+            },
+            accent: {
+              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309',
+            },
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(20, 37, 85, 0.18)',
+            card: '0 2px 8px -2px rgba(20, 37, 85, 0.08), 0 12px 32px -12px rgba(20, 37, 85, 0.16)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .bg-dots {
+      background-image: radial-gradient(rgba(27, 98, 240, 0.18) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+</head>
+
+<body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-200 selection:text-brand-950">
+
+  <!-- ============================================================
+       HEADER / NAVEGACIÓN
+  ============================================================= -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mt-3 flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition-all duration-300 sm:px-5" id="navbar" aria-label="Navegación principal">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+              <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+              <path d="M22 10v6" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-lg font-extrabold tracking-tight text-brand-950">Horizonte</span>
+            <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">Colegio</span>
+          </span>
+        </a>
+
+        <!-- Enlaces escritorio -->
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li><a href="index.html#inicio" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="index.html#nosotros" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="index.html#niveles" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="servicios.html" class="rounded-lg bg-brand-50 px-3.5 py-2 text-sm font-semibold text-brand-700" aria-current="page">Servicios</a></li>
+          <li><a href="index.html#noticias" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Noticias</a></li>
+          <li><a href="index.html#contacto" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="index.html#contacto" class="hidden rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-brand-600/35 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:inline-flex">
+            Solicitar admisión
+          </a>
+
+          <!-- Botón menú móvil -->
+          <button id="menu-toggle" type="button"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 lg:hidden"
+            aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Menú móvil -->
+      <div id="mobile-menu" class="mt-2 hidden overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-card lg:hidden">
+        <ul class="flex flex-col gap-1">
+          <li><a href="index.html#inicio" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="index.html#nosotros" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="index.html#niveles" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="servicios.html" class="mobile-link block rounded-xl bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700" aria-current="page">Servicios</a></li>
+          <li><a href="index.html#noticias" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Noticias</a></li>
+          <li><a href="index.html#contacto" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+        <a href="index.html#contacto" class="mobile-link mt-2 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-700">
+          Solicitar admisión
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================= -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24">
+      <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full bg-accent-200/40 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-dots opacity-40" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
+
+          <!-- Texto -->
+          <div class="reveal">
+            <!-- Miga de pan -->
+            <nav aria-label="Miga de pan" class="mb-5">
+              <ol class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                <li><a href="index.html" class="transition hover:text-brand-700">Inicio</a></li>
+                <li aria-hidden="true" class="text-slate-300">/</li>
+                <li class="text-brand-700" aria-current="page">Servicios</li>
+              </ol>
+            </nav>
+
+            <span class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700 shadow-sm backdrop-blur">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-600"></span>
+              </span>
+              Servicios escolares
+            </span>
+
+            <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+              Todo lo que tu familia necesita,
+              <span class="relative whitespace-nowrap">
+                <span class="relative z-10 bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">en un solo lugar</span>
+                <svg class="absolute -bottom-2 left-0 z-0 w-full text-accent-300" viewBox="0 0 300 12" fill="none" aria-hidden="true">
+                  <path d="M2 9c60-6 130-8 296-4" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Desde el transporte y la alimentación hasta el acompañamiento emocional y los talleres: nuestros servicios están pensados para que cada estudiante aprenda seguro, cómodo y feliz.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#servicios" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Explorar servicios
+                <svg class="h-4 w-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </a>
+              <a href="index.html#contacto" class="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Solicitar información
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- Accesos rápidos -->
+            <ul class="mt-8 flex flex-wrap gap-2">
+              <li><a href="#servicios" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"><svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Académico</a></li>
+              <li><a href="#destacados" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"><svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Bienestar</a></li>
+              <li><a href="#talleres" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"><svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Talleres</a></li>
+              <li><a href="#preguntas" class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-xs font-semibold text-slate-600 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700"><svg class="h-3.5 w-3.5 text-brand-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Preguntas frecuentes</a></li>
+            </ul>
+          </div>
+
+          <!-- Imagen -->
+          <div class="reveal delay-2 relative">
+            <div class="relative mx-auto max-w-lg lg:max-w-none">
+              <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-brand-200/60 via-white to-accent-200/50 blur-2xl" aria-hidden="true"></div>
+
+              <img class="aspect-[4/3.4] w-full rounded-[2rem] object-cover shadow-soft ring-1 ring-black/5"
+                src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80"
+                alt="Pasillo luminoso del colegio con estudiantes" width="1200" height="1020" />
+
+              <!-- Tarjeta flotante: servicios -->
+              <div class="absolute -left-3 bottom-6 flex items-center gap-3 rounded-2xl border border-slate-100 bg-white/95 p-4 shadow-card backdrop-blur sm:-left-8">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-100 text-brand-600">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="7" height="7" x="3" y="3" rx="1.5" /><rect width="7" height="7" x="14" y="3" rx="1.5" />
+                    <rect width="7" height="7" x="14" y="14" rx="1.5" /><rect width="7" height="7" x="3" y="14" rx="1.5" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-display text-xl font-extrabold leading-none text-brand-950">12</p>
+                  <p class="mt-1 text-xs font-medium text-slate-500">Servicios disponibles</p>
+                </div>
+              </div>
+
+              <!-- Tarjeta flotante: horario -->
+              <div class="absolute -right-2 top-8 rounded-2xl border border-slate-100 bg-white/95 p-3.5 shadow-card backdrop-blur sm:-right-6">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-9 w-9 place-items-center rounded-lg bg-accent-100 text-accent-600">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="font-display text-sm font-extrabold leading-none text-brand-950">7:30 – 16:00</p>
+                    <p class="mt-1 text-[11px] font-medium text-slate-500">Atención de lunes a viernes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ESTADÍSTICAS
+    ============================================================= -->
+    <section class="relative border-y border-slate-100 bg-white py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <dl class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <div class="reveal text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="12">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Servicios a tu disposición</dt>
+          </div>
+          <div class="reveal delay-1 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="25" data-suffix="+">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Talleres extracurriculares</dt>
+          </div>
+          <div class="reveal delay-2 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="60" data-suffix="+">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Profesionales y docentes</dt>
+          </div>
+          <div class="reveal delay-3 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="98" data-suffix="%">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Familias satisfechas</dt>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICIOS
+    ============================================================= -->
+    <section id="servicios" class="relative overflow-hidden bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Nuestros servicios</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Servicios para toda la comunidad escolar
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Cada servicio cuenta con un equipo especializado y protocolos claros, para que las familias tengan tranquilidad y los estudiantes, bienestar.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          <!-- 1. Programa bilingüe -->
+          <article class="reveal group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Académico</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Programa bilingüe</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Inmersión progresiva en inglés con docentes certificados y estándares internacionales.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Inglés intensivo desde Inicial</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Certificaciones Cambridge</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Intercambios culturales</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 2. Tecnología -->
+          <article class="reveal delay-1 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="14" x="2" y="3" rx="2" /><path d="M8 21h8M12 17v4" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Académico</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Tecnología e innovación</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Aulas digitales y laboratorios equipados para aprender haciendo, desde inicial hasta secundaria.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Laboratorio de robótica</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Aulas con pantallas interactivas</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Plataforma virtual de aprendizaje</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 3. Biblioteca -->
+          <article class="reveal delay-2 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-500">Académico</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Biblioteca y recursos</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Un espacio para la lectura, la investigación y el estudio, con recursos físicos y digitales.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Préstamo a domicilio</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Salas de estudio y trabajo grupal</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Biblioteca digital 24/7</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 4. Psicología -->
+          <article class="reveal group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-rose-50 text-rose-500 transition group-hover:bg-rose-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-rose-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-rose-500">Bienestar</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Psicología y bienestar</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Acompañamiento emocional cercano para estudiantes, docentes y familias, con un enfoque preventivo.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Orientación individual y grupal</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Talleres de convivencia</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Escuela para padres</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 5. Enfermería -->
+          <article class="reveal delay-1 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-rose-50 text-rose-500 transition group-hover:bg-rose-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 2a2 2 0 0 1 2 2v5h5a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-5v5a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-5H2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h5V4a2 2 0 0 1 2-2h2Z" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-rose-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-rose-500">Bienestar</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Enfermería escolar</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Atención permanente durante la jornada, con personal capacitado y protocolos de actuación claros.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Atención primaria y botiquín</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Protocolos ante emergencias</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Seguimiento de tratamientos</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 6. Comedor -->
+          <article class="reveal delay-2 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-amber-50 text-amber-600 transition group-hover:bg-amber-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-amber-600">Bienestar</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Comedor saludable</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Menús diseñados por nutricionistas, con ingredientes frescos y adaptados a cada necesidad.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Menús balanceados y variados</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Opciones vegetarianas</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Control estricto de alergias</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 7. Transporte -->
+          <article class="reveal group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-sky-50 text-sky-600 transition group-hover:bg-sky-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M8 6v6M15 6v6M2 12h19.6" /><path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" /><circle cx="7" cy="18" r="2" /><path d="M9 18h5" /><circle cx="16" cy="18" r="2" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-sky-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-sky-600">Logística</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Transporte escolar</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Rutas seguras y puntuales, con monitoreo en tiempo real y acompañamiento en cada trayecto.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Rutas monitoreadas con GPS</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Acompañante en cada ruta</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Seguro de viaje incluido</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 8. Seguro -->
+          <article class="reveal delay-1 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 text-emerald-600 transition group-hover:bg-emerald-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-600">Logística</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Seguro escolar</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Cobertura integral ante accidentes dentro y fuera del colegio, con acompañamiento en cada caso.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Cobertura ante accidentes</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Asistencia médica</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Asesoría en siniestros</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- 9. Escuela para padres -->
+          <article class="reveal delay-2 group flex flex-col rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <div class="flex items-start justify-between gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-violet-50 text-violet-600 transition group-hover:bg-violet-500 group-hover:text-white">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </span>
+              <span class="rounded-full bg-violet-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-violet-600">Familia</span>
+            </div>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Escuela para padres</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Un espacio de encuentro y aprendizaje para acompañar la crianza y fortalecer la comunidad.
+            </p>
+            <ul class="mt-4 space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Charlas mensuales</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Talleres de crianza positiva</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Comunidad de familias</li>
+            </ul>
+            <a href="index.html#contacto" class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+              Más información
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SERVICIOS DESTACADOS
+    ============================================================= -->
+    <section id="destacados" class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-accent-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-700">Conoce más</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Servicios que hacen la diferencia
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Tres pilares que cuidamos todos los días para que la experiencia escolar sea completa y segura.
+          </p>
+        </div>
+
+        <div class="mt-16 space-y-16 lg:space-y-24">
+
+          <!-- Destacado 1 -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div class="reveal relative">
+              <div class="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-tr from-rose-100 to-brand-100 blur-xl" aria-hidden="true"></div>
+              <img class="aspect-[4/3] w-full rounded-3xl object-cover shadow-soft ring-1 ring-black/5"
+                src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1000&q=80"
+                alt="Psicóloga conversando con una estudiante en un espacio acogedor" loading="lazy" />
+              <div class="absolute -bottom-5 left-6 flex items-center gap-3 rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-card backdrop-blur">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-rose-100 text-rose-500">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z" /></svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Equipo interdisciplinario</p>
+                  <p class="text-xs text-slate-500">Psicólogos y orientadores</p>
+                </div>
+              </div>
+            </div>
+            <div class="reveal delay-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-rose-500">Bienestar estudiantil</span>
+              <h3 class="mt-3 font-display text-2xl font-extrabold tracking-tight text-brand-950 sm:text-3xl">
+                Un acompañamiento que se siente cercano
+              </h3>
+              <p class="mt-4 text-base leading-relaxed text-slate-600">
+                El bienestar emocional es parte del currículo. Contamos con un equipo que conoce a cada estudiante por su nombre y trabaja junto a las familias y docentes.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rose-100 text-rose-500"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Acompañamiento individual y seguimiento personalizado.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rose-100 text-rose-500"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Protocolos de convivencia y prevención del acoso escolar.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-rose-100 text-rose-500"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Espacios de calma y talleres de educación emocional.</li>
+              </ul>
+              <a href="index.html#contacto" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Conoce al equipo
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Destacado 2 -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div class="reveal order-1 lg:order-2 relative">
+              <div class="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-tr from-sky-100 to-brand-100 blur-xl" aria-hidden="true"></div>
+              <img class="aspect-[4/3] w-full rounded-3xl object-cover shadow-soft ring-1 ring-black/5"
+                src="https://images.unsplash.com/photo-1557223562-6c77ef16210f?auto=format&fit=crop&w=1000&q=80"
+                alt="Bus escolar amarillo estacionado frente al colegio" loading="lazy" />
+              <div class="absolute -bottom-5 right-6 flex items-center gap-3 rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-card backdrop-blur">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-sky-100 text-sky-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Rutas en tiempo real</p>
+                  <p class="text-xs text-slate-500">Seguimiento desde la app</p>
+                </div>
+              </div>
+            </div>
+            <div class="reveal delay-1 order-2 lg:order-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-600">Transporte escolar</span>
+              <h3 class="mt-3 font-display text-2xl font-extrabold tracking-tight text-brand-950 sm:text-3xl">
+                Traslados seguros, de la casa al colegio
+              </h3>
+              <p class="mt-4 text-base leading-relaxed text-slate-600">
+                Diseñamos rutas eficientes y seguras. Cada unidad cuenta con acompañante, monitoreo GPS y comunicación directa con las familias.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sky-100 text-sky-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Rutas con GPS y notificaciones de llegada.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sky-100 text-sky-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Conductores capacitados y unidades revisadas.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-sky-100 text-sky-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Acompañante adulto en cada recorrido.</li>
+              </ul>
+              <a href="index.html#contacto" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Consulta las rutas
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Destacado 3 -->
+          <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+            <div class="reveal relative">
+              <div class="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-tr from-amber-100 to-brand-100 blur-xl" aria-hidden="true"></div>
+              <img class="aspect-[4/3] w-full rounded-3xl object-cover shadow-soft ring-1 ring-black/5"
+                src="https://images.unsplash.com/photo-1567521464027-f127ff144326?auto=format&fit=crop&w=1000&q=80"
+                alt="Bandeja con comida saludable y colorida servida en el comedor" loading="lazy" />
+              <div class="absolute -bottom-5 left-6 flex items-center gap-3 rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-card backdrop-blur">
+                <span class="grid h-10 w-10 place-items-center rounded-xl bg-amber-100 text-amber-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Menús por ciclo</p>
+                  <p class="text-xs text-slate-500">Diseñados por nutricionistas</p>
+                </div>
+              </div>
+            </div>
+            <div class="reveal delay-1">
+              <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Alimentación</span>
+              <h3 class="mt-3 font-display text-2xl font-extrabold tracking-tight text-brand-950 sm:text-3xl">
+                Alimentación que nutre y educa
+              </h3>
+              <p class="mt-4 text-base leading-relaxed text-slate-600">
+                Creemos que comer bien también es aprender. Nuestro comedor ofrece menús equilibrados, frescos y adaptados a las necesidades de cada estudiante.
+              </p>
+              <ul class="mt-6 space-y-3 text-sm text-slate-600">
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Menús revisados por nutricionistas cada semana.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Protocolos para alergias e intolerancias alimentarias.</li>
+                <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-amber-100 text-amber-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Hábitos saludables y educación alimentaria en el aula.</li>
+              </ul>
+              <a href="index.html#contacto" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Ver menús de ejemplo
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TALLERES
+    ============================================================= -->
+    <section id="talleres" class="relative overflow-hidden bg-brand-950 py-20 text-white lg:py-28">
+      <div class="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/30 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-accent-500/20 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-end gap-6 md:grid-cols-2">
+          <div>
+            <span class="inline-block rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-100 ring-1 ring-inset ring-white/20">Extracurriculares</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.6rem]">
+              Talleres para descubrir talentos
+            </h2>
+          </div>
+          <p class="text-base leading-relaxed text-brand-100/80 md:text-right">
+            Más de 25 opciones deportivas, artísticas y científicas. Los talleres se activan por periodo y tienen cupos limitados.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+
+          <article class="reveal group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 9h.01M15 9h.01M9 15h.01M15 15h.01M12 12h.01" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Robótica</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Lun y Mié · 3:30 – 5:00 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">8 a 15 años</span>
+          </article>
+
+          <article class="reveal delay-1 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Música y banda</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Mar y Jue · 3:30 – 5:00 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">7 a 17 años</span>
+          </article>
+
+          <article class="reveal delay-2 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 10s3-3 3-3 3 3 3 3" /><path d="M22 10s-3-3-3-3-3 3-3 3" /><path d="M10 2s1.5 2 2 2 2-2 2-2" /><path d="M10 22s1.5-2 2-2 2 2 2 2" /><path d="M8 10h8v4a4 4 0 0 1-8 0v-4Z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Teatro</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Jueves · 3:30 – 5:30 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">9 a 17 años</span>
+          </article>
+
+          <article class="reveal delay-3 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Fútbol</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Lun y Vie · 3:30 – 5:00 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">6 a 17 años</span>
+          </article>
+
+          <article class="reveal group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" /><path d="M5.6 5.6c3 3 3 9.8 0 12.8M18.4 5.6c-3 3-3 9.8 0 12.8M2 12h20" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Básquet</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Mar y Jue · 4:00 – 5:30 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">8 a 17 años</span>
+          </article>
+
+          <article class="reveal delay-1 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="2" /><path d="M8 8h8v8H8z" /><path d="M12 3v5M12 16v5M3 12h5M16 12h5" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Ajedrez</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Miércoles · 3:30 – 4:30 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">6 a 17 años</span>
+          </article>
+
+          <article class="reveal delay-2 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" /><path d="M8 10h.01M12 10h.01M16 10h.01" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Debate</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Viernes · 3:30 – 5:00 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">12 a 17 años</span>
+          </article>
+
+          <article class="reveal delay-3 group rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/10">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-accent-400/15 text-accent-300">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" /><circle cx="17.5" cy="10.5" r=".5" fill="currentColor" /><circle cx="8.5" cy="7.5" r=".5" fill="currentColor" /><circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.9 0 1.8-.8 1.8-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7H17c2.8 0 5-2.2 5-5C22 6.5 17.5 2 12 2Z" />
+              </svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">Arte y pintura</h3>
+            <p class="mt-1 text-sm text-brand-100/70">Lunes · 3:30 – 5:00 p.m.</p>
+            <span class="mt-3 inline-block rounded-full bg-white/10 px-2.5 py-1 text-[11px] font-semibold text-brand-100">5 a 12 años</span>
+          </article>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="index.html#contacto" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-950">
+            Consulta la lista completa
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CÓMO ACCEDER
+    ============================================================= -->
+    <section class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Proceso simple</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            ¿Cómo acceder a los servicios?
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Tres pasos y listo. Nuestro equipo de admisiones te acompaña en todo el proceso.
+          </p>
+        </div>
+
+        <ol class="relative mt-14 grid gap-8 md:grid-cols-3">
+          <!-- Línea conectora -->
+          <div class="pointer-events-none absolute left-[16%] right-[16%] top-7 hidden h-px bg-gradient-to-r from-brand-200 via-brand-300 to-brand-200 md:block" aria-hidden="true"></div>
+
+          <li class="reveal relative text-center">
+            <span class="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-600 font-display text-xl font-extrabold text-white shadow-lg shadow-brand-600/30">1</span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Solicita información</h3>
+            <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-600">
+              Completa el formulario o escríbenos por WhatsApp. Te enviamos la lista de servicios y costos.
+            </p>
+          </li>
+
+          <li class="reveal delay-1 relative text-center">
+            <span class="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-600 font-display text-xl font-extrabold text-white shadow-lg shadow-brand-600/30">2</span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Agenda una visita</h3>
+            <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-600">
+              Recorre el campus, conoce al equipo y resuelve tus dudas sobre transporte, comedor y talleres.
+            </p>
+          </li>
+
+          <li class="reveal delay-2 relative text-center">
+            <span class="relative z-10 mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand-600 font-display text-xl font-extrabold text-white shadow-lg shadow-brand-600/30">3</span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Activa tus servicios</h3>
+            <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-slate-600">
+              Elige ruta, menú y talleres al momento de la matrícula. Todo queda confirmado por escrito.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PREGUNTAS FRECUENTES
+    ============================================================= -->
+    <section id="preguntas" class="bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+
+          <div class="reveal">
+            <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Dudas frecuentes</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
+              Preguntas sobre nuestros servicios
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">
+              Si no encuentras lo que buscas, escríbenos y con gusto te ayudamos.
+            </p>
+            <a href="index.html#contacto" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+              Hablar con admisiones
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+
+          <div class="reveal delay-1 space-y-3">
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
+                ¿El transporte escolar tiene un costo adicional?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Sí. El servicio de transporte se contrata por separado y su tarifa depende de la ruta y la distancia. Al momento de la matrícula recibirás el detalle de las rutas disponibles y sus costos.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
+                ¿Cómo se gestionan las alergias alimentarias?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Cada familia declara las alergias e intolerancias al inscribirse. El equipo de nutrición y enfermería elabora un plan individual, identifica los alimentos y coordina con el personal del comedor para evitar contactos cruzados.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
+                ¿Los talleres extracurriculares están incluidos en la matrícula?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Algunos talleres están incluidos en la jornada escolar y otros son opcionales con un costo adicional. En la lista de talleres de cada periodo se indica claramente cuáles son gratuitos y cuáles requieren inscripción aparte.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
+                ¿Qué cobertura tiene el seguro escolar?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                El seguro cubre accidentes ocurridos dentro del colegio y en actividades escolares fuera del campus. Incluye atención médica de emergencia y orientación para las familias durante el proceso de reclamo.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
+                ¿Puedo solicitar atención psicológica para mi hijo/a?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Sí. Puedes comunicarte con el departamento de psicología a través del tutor de tu hijo/a o del correo de contacto. La atención es confidencial y, si se requiere un acompañamiento externo, te orientamos con especialistas de la red aliada.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+    ============================================================= -->
+    <section class="bg-white py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-14 shadow-soft sm:px-12 lg:px-16 lg:py-16">
+          <div class="pointer-events-none absolute inset-0 bg-grid opacity-70" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-accent-400/20 blur-3xl" aria-hidden="true"></div>
+
+          <div class="relative grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+            <div>
+              <span class="inline-block rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-inset ring-white/25">
+                Estamos para ayudarte
+              </span>
+              <h2 class="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                Hablemos de lo que tu familia necesita.
+              </h2>
+              <p class="mt-4 max-w-xl text-base leading-relaxed text-brand-50/90">
+                Cuéntanos qué servicios te interesan y te enviaremos información detallada, costos y disponibilidad para el próximo año escolar.
+              </p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <a href="index.html#contacto" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600">
+                Solicitar información
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href="tel:+5112345678" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                (01) 234 5678
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="bg-brand-950 text-brand-100">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+
+        <!-- Marca -->
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white ring-1 ring-inset ring-white/15">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" /><path d="M22 10v6" />
+              </svg>
+            </span>
+            <span class="flex flex-col leading-none">
+              <span class="font-display text-lg font-extrabold tracking-tight text-white">Horizonte</span>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-300">Colegio</span>
+            </span>
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-brand-200/80">
+            Educación integral de excelencia desde 1991. Formamos personas íntegras, curiosas y comprometidas con su comunidad.
+          </p>
+          <div class="mt-6 flex gap-2.5">
+            <a href="#" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.43-4.94 8.43-9.94Z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.41-.66.8-.87 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.41.4.8.66 1.35.87.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.41.66-.8.87-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36Zm5.2-3.2a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42a2.5 2.5 0 0 0-1.76 1.77A26.1 26.1 0 0 0 2 12a26.1 26.1 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.1 26.1 0 0 0 22 12a26.1 26.1 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Colegio</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="index.html#nosotros" class="text-brand-200/80 transition hover:text-white">Nuestra propuesta</a></li>
+            <li><a href="index.html#niveles" class="text-brand-200/80 transition hover:text-white">Niveles educativos</a></li>
+            <li><a href="servicios.html" class="text-brand-200/80 transition hover:text-white">Servicios</a></li>
+            <li><a href="index.html#vida" class="text-brand-200/80 transition hover:text-white">Vida escolar</a></li>
+            <li><a href="index.html#noticias" class="text-brand-200/80 transition hover:text-white">Noticias y eventos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Admisiones</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="index.html#admision" class="text-brand-200/80 transition hover:text-white">Proceso de admisión</a></li>
+            <li><a href="index.html#contacto" class="text-brand-200/80 transition hover:text-white">Agenda una visita</a></li>
+            <li><a href="servicios.html#preguntas" class="text-brand-200/80 transition hover:text-white">Preguntas frecuentes</a></li>
+            <li><a href="index.html#contacto" class="text-brand-200/80 transition hover:text-white">Becas y descuentos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Contacto</h3>
+          <ul class="mt-5 space-y-3 text-sm text-brand-200/80">
+            <li>Av. Los Álamos 1250,<br />Miraflores, Lima</li>
+            <li><a href="tel:+5112345678" class="transition hover:text-white">(01) 234 5678</a></li>
+            <li><a href="mailto:admisiones@colegiohorizonte.edu" class="break-all transition hover:text-white">admisiones@colegiohorizonte.edu</a></li>
+            <li>Lun – Vie · 7:30 a.m. – 4:00 p.m.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-brand-300/70 sm:flex-row">
+        <p>© <span id="year">2026</span> Colegio Horizonte. Todos los derechos reservados.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <a href="#" class="transition hover:text-white">Política de privacidad</a>
+          <a href="#" class="transition hover:text-white">Términos de uso</a>
+          <a href="#" class="transition hover:text-white">Libro de reclamaciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button id="back-to-top" type="button" aria-label="Volver arriba"
+    class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-1 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------- Menú móvil ---------- */
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+
+      function closeMenu() {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          menuToggle.setAttribute('aria-expanded', 'true');
+          menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+        }
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      /* ---------- Header con fondo al hacer scroll ---------- */
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('back-to-top');
+
+      function onScroll() {
+        if (window.scrollY > 24) {
+          navbar.classList.add('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.remove('border-transparent');
+        } else {
+          navbar.classList.remove('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.add('border-transparent');
+        }
+
+        if (window.scrollY > 500) {
+          backToTop.classList.remove('hidden');
+          backToTop.classList.add('grid');
+        } else {
+          backToTop.classList.add('hidden');
+          backToTop.classList.remove('grid');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* ---------- Animación al hacer scroll ---------- */
+      const revealItems = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealItems.forEach(function (item) { observer.observe(item); });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+      }
+
+      /* ---------- Contadores animados ---------- */
+      const counters = document.querySelectorAll('[data-count]');
+
+      function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1600;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('es-PE') + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+
+        counters.forEach(function (counter) { counterObserver.observe(counter); });
+      } else {
+        counters.forEach(animateCounter);
+      }
+
+      /* ---------- Año dinámico ---------- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
