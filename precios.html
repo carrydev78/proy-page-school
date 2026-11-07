@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Precios | Colegio Horizonte</title>
+  <meta name="description" content="Precios del Colegio Horizonte: pensiones por nivel, matrícula, transporte, comedor, talleres, seguro escolar, uniformes, materiales y servicios incluidos. Año escolar 2027." />
+  <meta name="theme-color" content="#1b62f0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b62f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10 12 5 2 10l10 5 10-5Z'/%3E%3Cpath d='M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5'/%3E%3C/svg%3E" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- TailwindCSS (CDN para desarrollo). En producción se recomienda compilarlo. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef6ff', 100: '#d9eaff', 200: '#bcdcff', 300: '#8ec6ff',
+              400: '#59a5ff', 500: '#3282fb', 600: '#1b62f0', 700: '#144ee0',
+              800: '#1740b5', 900: '#193a8e', 950: '#142555',
+            },
+            accent: {
+              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309',
+            },
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(20, 37, 85, 0.18)',
+            card: '0 2px 8px -2px rgba(20, 37, 85, 0.08), 0 12px 32px -12px rgba(20, 37, 85, 0.16)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .bg-dots {
+      background-image: radial-gradient(rgba(27, 98, 240, 0.18) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+</head>
+
+<body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-200 selection:text-brand-950">
+
+  <!-- ============================================================
+       HEADER / NAVEGACIÓN
+  ============================================================= -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mt-3 flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition-all duration-300 sm:px-5" id="navbar" aria-label="Navegación principal">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+              <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+              <path d="M22 10v6" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-lg font-extrabold tracking-tight text-brand-950">Horizonte</span>
+            <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">Colegio</span>
+          </span>
+        </a>
+
+        <!-- Enlaces escritorio -->
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li><a href="index.html#inicio" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="index.html#nosotros" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="index.html#niveles" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="servicios.html" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Servicios</a></li>
+          <li><a href="precios.html" class="rounded-lg bg-brand-50 px-3.5 py-2 text-sm font-semibold text-brand-700" aria-current="page">Precios</a></li>
+          <li><a href="index.html#contacto" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="index.html#contacto" class="hidden rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-brand-600/35 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:inline-flex">
+            Solicitar admisión
+          </a>
+
+          <!-- Botón menú móvil -->
+          <button id="menu-toggle" type="button"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 lg:hidden"
+            aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Menú móvil -->
+      <div id="mobile-menu" class="mt-2 hidden overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-card lg:hidden">
+        <ul class="flex flex-col gap-1">
+          <li><a href="index.html#inicio" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="index.html#nosotros" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="index.html#niveles" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="servicios.html" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Servicios</a></li>
+          <li><a href="precios.html" class="mobile-link block rounded-xl bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-700" aria-current="page">Precios</a></li>
+          <li><a href="index.html#contacto" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+        <a href="index.html#contacto" class="mobile-link mt-2 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-700">
+          Solicitar admisión
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO
+    ============================================================= -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24">
+      <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full bg-accent-200/40 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-dots opacity-40" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+
+          <!-- Texto -->
+          <div class="reveal">
+            <nav aria-label="Miga de pan" class="mb-5">
+              <ol class="flex items-center gap-2 text-xs font-semibold text-slate-500">
+                <li><a href="index.html" class="transition hover:text-brand-700">Inicio</a></li>
+                <li aria-hidden="true" class="text-slate-300">/</li>
+                <li class="text-brand-700" aria-current="page">Precios</li>
+              </ol>
+            </nav>
+
+            <span class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700 shadow-sm backdrop-blur">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-600"></span>
+              </span>
+              Año escolar 2027
+            </span>
+
+            <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+              Precios claros,
+              <span class="relative whitespace-nowrap">
+                <span class="relative z-10 bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">sin sorpresas</span>
+                <svg class="absolute -bottom-2 left-0 z-0 w-full text-accent-300" viewBox="0 0 300 12" fill="none" aria-hidden="true">
+                  <path d="M2 9c60-6 130-8 296-4" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Conoce el detalle de pensiones, matrícula y servicios opcionales. Una inversión transparente en el futuro de tu hijo, con opciones de pago flexibles y becas disponibles.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#planes" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Ver planes y precios
+                <svg class="h-4 w-4 transition-transform group-hover:translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+              </a>
+              <a href="index.html#contacto" class="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Solicitar información
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </div>
+
+            <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                Sin costos ocultos
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                Pago en 10 cuotas
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="h-4 w-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                Becas hasta 25%
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tarjeta resumen -->
+          <div class="reveal delay-2 relative">
+            <div class="relative mx-auto max-w-md">
+              <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-brand-200/60 via-white to-accent-200/50 blur-2xl" aria-hidden="true"></div>
+
+              <div class="rounded-[2rem] border border-slate-200 bg-white p-7 shadow-soft sm:p-8">
+                <div class="flex items-center justify-between gap-3">
+                  <span class="rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-700">Resumen 2027</span>
+                  <span class="text-xs font-medium text-slate-500">Soles peruanos</span>
+                </div>
+
+                <p class="mt-6 text-sm font-medium text-slate-500">Pensión mensual desde</p>
+                <div class="mt-1 flex items-end gap-2">
+                  <span class="font-display text-5xl font-extrabold tracking-tight text-brand-950">S/ 850</span>
+                  <span class="pb-1.5 text-sm font-medium text-slate-500">/ mes</span>
+                </div>
+                <p class="mt-2 text-xs text-slate-500">10 cuotas · marzo a diciembre</p>
+
+                <dl class="mt-6 space-y-3 border-t border-slate-100 pt-6 text-sm">
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-slate-500">Matrícula desde</dt>
+                    <dd class="font-semibold text-brand-950">S/ 900</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-slate-500">Pago anual</dt>
+                    <dd class="font-semibold text-emerald-600">10% de descuento</dd>
+                  </div>
+                  <div class="flex items-center justify-between gap-4">
+                    <dt class="text-slate-500">Seguro escolar</dt>
+                    <dd class="font-semibold text-brand-950">S/ 120 / año</dd>
+                  </div>
+                </dl>
+
+                <a href="#planes" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                  Ver todos los planes
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </div>
+
+              <!-- Tarjeta flotante -->
+              <div class="absolute -bottom-5 -right-3 flex items-center gap-2.5 rounded-2xl border border-slate-100 bg-white/95 px-4 py-3 shadow-card backdrop-blur sm:-right-6">
+                <span class="grid h-9 w-9 place-items-center rounded-lg bg-emerald-100 text-emerald-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" /></svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Sin costos ocultos</p>
+                  <p class="text-[11px] text-slate-500">Todo detallado por escrito</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BENEFICIOS
+    ============================================================= -->
+    <section class="relative border-y border-slate-100 bg-white py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <li class="reveal flex items-start gap-3">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-brand-950">Transparencia total</p>
+              <p class="mt-0.5 text-xs text-slate-500">Precios detallados y sin cargos sorpresa.</p>
+            </div>
+          </li>
+          <li class="reveal delay-1 flex items-start gap-3">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2" /><path d="M2 10h20" /></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-brand-950">Pago flexible</p>
+              <p class="mt-0.5 text-xs text-slate-500">10 cuotas mensuales o pago anual con descuento.</p>
+            </div>
+          </li>
+          <li class="reveal delay-2 flex items-start gap-3">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-brand-950">Becas y descuentos</p>
+              <p class="mt-0.5 text-xs text-slate-500">Apoyo al talento y a las familias con hermanos.</p>
+            </div>
+          </li>
+          <li class="reveal delay-3 flex items-start gap-3">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" /></svg>
+            </span>
+            <div>
+              <p class="text-sm font-bold text-brand-950">Asesoría personalizada</p>
+              <p class="mt-0.5 text-xs text-slate-500">Te ayudamos a elegir el mejor plan de pago.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PLANES POR NIVEL
+    ============================================================= -->
+    <section id="planes" class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Pensiones y matrícula</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Planes por nivel educativo
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Elige la forma de pago que mejor se adapte a tu familia. Los servicios opcionales se detallan más abajo.
+          </p>
+        </div>
+
+        <!-- Selector de forma de pago -->
+        <div class="mt-8 flex justify-center">
+          <div class="inline-flex rounded-full border border-slate-200 bg-white p-1 shadow-sm" role="group" aria-label="Forma de pago">
+            <button type="button" data-billing="monthly" aria-pressed="true"
+              class="billing-btn rounded-full bg-brand-600 px-5 py-2 text-sm font-semibold text-white shadow transition">
+              Pago mensual
+            </button>
+            <button type="button" data-billing="annual" aria-pressed="false"
+              class="billing-btn rounded-full px-5 py-2 text-sm font-semibold text-slate-600 transition hover:text-brand-700">
+              Pago anual
+              <span class="ml-1 rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-700">-10%</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-12 grid gap-7 lg:grid-cols-3">
+
+          <!-- Inicial -->
+          <article class="reveal relative flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <span class="inline-flex w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">3 a 5 años</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-brand-950">Nivel Inicial</h3>
+            <p class="mt-1 text-sm text-slate-500">Primeros pasos con juego, afecto y exploración.</p>
+
+            <div class="mt-6 flex items-end gap-1.5">
+              <span class="pb-1 text-lg font-semibold text-slate-500">S/</span>
+              <span class="price-amount font-display text-4xl font-extrabold tracking-tight text-brand-950" data-monthly="850" data-annual="7650">850</span>
+              <span class="price-period pb-1 text-sm font-medium text-slate-500">/ mes</span>
+            </div>
+            <p class="price-monthly-note mt-1 text-xs text-slate-500">10 cuotas · marzo a diciembre</p>
+            <p class="price-annual-note mt-1 hidden text-xs font-semibold text-emerald-600">Pago único anual · ahorras 10%</p>
+            <p class="mt-3 text-xs text-slate-500">Matrícula: <span class="font-semibold text-brand-950">S/ 900</span> (pago único)</p>
+
+            <ul class="mt-6 flex-1 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Programa bilingüe incluido</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Materiales didácticos incluidos</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Acompañamiento psicopedagógico</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Biblioteca y recursos digitales</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Informes de progreso trimestrales</li>
+            </ul>
+
+            <a href="index.html#contacto" class="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+              Solicitar admisión
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- Primaria -->
+          <article class="reveal delay-1 relative flex flex-col rounded-3xl border-2 border-brand-600 bg-white p-7 shadow-card transition duration-300 hover:-translate-y-1.5">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent-400 px-3.5 py-1 text-xs font-bold text-brand-950 shadow-sm">Más elegido</span>
+            <span class="inline-flex w-fit rounded-full bg-brand-50 px-3 py-1 text-xs font-bold text-brand-700">6 a 11 años</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-brand-950">Nivel Primaria</h3>
+            <p class="mt-1 text-sm text-slate-500">Autonomía, curiosidad y proyectos interdisciplinarios.</p>
+
+            <div class="mt-6 flex items-end gap-1.5">
+              <span class="pb-1 text-lg font-semibold text-slate-500">S/</span>
+              <span class="price-amount font-display text-4xl font-extrabold tracking-tight text-brand-950" data-monthly="980" data-annual="8820">980</span>
+              <span class="price-period pb-1 text-sm font-medium text-slate-500">/ mes</span>
+            </div>
+            <p class="price-monthly-note mt-1 text-xs text-slate-500">10 cuotas · marzo a diciembre</p>
+            <p class="price-annual-note mt-1 hidden text-xs font-semibold text-emerald-600">Pago único anual · ahorras 10%</p>
+            <p class="mt-3 text-xs text-slate-500">Matrícula: <span class="font-semibold text-brand-950">S/ 1,100</span> (pago único)</p>
+
+            <ul class="mt-6 flex-1 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Programa bilingüe intensivo</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Laboratorio de ciencias y robótica</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Materiales y plataforma digital</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Psicología y enfermería escolar</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Informes de progreso trimestrales</li>
+            </ul>
+
+            <a href="index.html#contacto" class="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+              Solicitar admisión
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+
+          <!-- Secundaria -->
+          <article class="reveal delay-2 relative flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <span class="inline-flex w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">12 a 17 años</span>
+            <h3 class="mt-4 font-display text-xl font-bold text-brand-950">Nivel Secundaria</h3>
+            <p class="mt-1 text-sm text-slate-500">Preparación universitaria, liderazgo y vocación.</p>
+
+            <div class="mt-6 flex items-end gap-1.5">
+              <span class="pb-1 text-lg font-semibold text-slate-500">S/</span>
+              <span class="price-amount font-display text-4xl font-extrabold tracking-tight text-brand-950" data-monthly="1150" data-annual="10350">1,150</span>
+              <span class="price-period pb-1 text-sm font-medium text-slate-500">/ mes</span>
+            </div>
+            <p class="price-monthly-note mt-1 text-xs text-slate-500">10 cuotas · marzo a diciembre</p>
+            <p class="price-annual-note mt-1 hidden text-xs font-semibold text-emerald-600">Pago único anual · ahorras 10%</p>
+            <p class="mt-3 text-xs text-slate-500">Matrícula: <span class="font-semibold text-brand-950">S/ 1,300</span> (pago único)</p>
+
+            <ul class="mt-6 flex-1 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Programa bilingüe y certificaciones</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Orientación vocacional personalizada</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Laboratorios y aulas digitales</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Convenios con universidades</li>
+              <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Informes de progreso trimestrales</li>
+            </ul>
+
+            <a href="index.html#contacto" class="mt-7 inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+              Solicitar admisión
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </article>
+        </div>
+
+        <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-500">
+          Precios expresados en soles peruanos (PEN) y vigentes para el año escolar 2027. La pensión se paga en 10 cuotas (marzo a diciembre). La matrícula es un pago único anual. No incluye uniforme, materiales ni servicios opcionales, salvo indicación.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TABLA DE PRECIOS DE SERVICIOS
+    ============================================================= -->
+    <section id="servicios-precios" class="relative overflow-hidden bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-accent-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-700">Detalle completo</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Precios de todos nuestros servicios
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Servicios opcionales y todo lo que ya está incluido en la pensión mensual. Sin letra pequeña.
+          </p>
+        </div>
+
+        <div class="reveal mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full min-w-[720px] text-left text-sm">
+              <caption class="sr-only">Precios de servicios del Colegio Horizonte para el año escolar 2027</caption>
+              <thead class="bg-slate-50 text-[11px] uppercase tracking-wider text-slate-500">
+                <tr>
+                  <th scope="col" class="px-5 py-4 font-bold">Servicio</th>
+                  <th scope="col" class="px-5 py-4 font-bold">Detalle</th>
+                  <th scope="col" class="px-5 py-4 font-bold">Tarifa</th>
+                  <th scope="col" class="px-5 py-4 font-bold">Periodicidad</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="bg-brand-50/50">
+                  <th colspan="4" scope="colgroup" class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider text-brand-700">Servicios opcionales</th>
+                </tr>
+
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Transporte escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Zona A · hasta 5 km</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 180</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Transporte escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Zona B · de 5 a 10 km</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 230</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Transporte escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Zona C · más de 10 km</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 280</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Comedor</th>
+                  <td class="px-5 py-4 text-slate-500">Refrigerio saludable de media mañana</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 120</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Comedor</th>
+                  <td class="px-5 py-4 text-slate-500">Almuerzo completo</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 320</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Comedor</th>
+                  <td class="px-5 py-4 text-slate-500">Refrigerio + almuerzo (paquete)</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 420</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Taller extracurricular</th>
+                  <td class="px-5 py-4 text-slate-500">Por taller y por periodo</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 150</td>
+                  <td class="px-5 py-4 text-slate-500">Mensual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Seguro escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Cobertura integral ante accidentes</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 120</td>
+                  <td class="px-5 py-4 text-slate-500">Anual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Uniforme escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Kit completo: 2 polos, buzo y casaca</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 420</td>
+                  <td class="px-5 py-4 text-slate-500">Pago único</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Materiales y útiles</th>
+                  <td class="px-5 py-4 text-slate-500">Nivel Inicial</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 250</td>
+                  <td class="px-5 py-4 text-slate-500">Anual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Materiales y útiles</th>
+                  <td class="px-5 py-4 text-slate-500">Nivel Primaria</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 320</td>
+                  <td class="px-5 py-4 text-slate-500">Anual</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Materiales y útiles</th>
+                  <td class="px-5 py-4 text-slate-500">Nivel Secundaria</td>
+                  <td class="px-5 py-4 font-bold text-brand-950">S/ 380</td>
+                  <td class="px-5 py-4 text-slate-500">Anual</td>
+                </tr>
+
+                <tr class="bg-brand-50/50">
+                  <th colspan="4" scope="colgroup" class="px-5 py-3 text-left text-xs font-bold uppercase tracking-wider text-brand-700">Incluido en la pensión mensual</th>
+                </tr>
+
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Programa bilingüe</th>
+                  <td class="px-5 py-4 text-slate-500">Inglés intensivo y certificaciones</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Incluido</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Biblioteca y recursos</th>
+                  <td class="px-5 py-4 text-slate-500">Préstamo a domicilio y biblioteca digital</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Incluido</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Psicología y bienestar</th>
+                  <td class="px-5 py-4 text-slate-500">Acompañamiento emocional y orientación</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Incluido</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Enfermería escolar</th>
+                  <td class="px-5 py-4 text-slate-500">Atención permanente durante la jornada</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Incluido</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Tecnología y laboratorios</th>
+                  <td class="px-5 py-4 text-slate-500">Aulas digitales, robótica y plataforma virtual</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-bold text-emerald-700"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Incluido</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+                <tr class="transition hover:bg-slate-50/80">
+                  <th scope="row" class="px-5 py-4 font-semibold text-brand-950">Escuela para padres</th>
+                  <td class="px-5 py-4 text-slate-500">Charlas y talleres de crianza</td>
+                  <td class="px-5 py-4"><span class="inline-flex items-center gap-1 rounded-full bg-accent-100 px-2.5 py-1 text-[11px] font-bold text-accent-700">Gratuito</span></td>
+                  <td class="px-5 py-4 text-slate-400">—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="mx-auto mt-6 max-w-3xl text-center text-xs leading-relaxed text-slate-500">
+          Los servicios opcionales se facturan junto con la pensión mensual, excepto el seguro escolar, el uniforme y los materiales, que se pagan una vez al año. Los precios de transporte están sujetos a la ruta asignada.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ESTIMADOR DE MENSUALIDAD
+    ============================================================= -->
+    <section id="estimador" class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+
+          <div class="reveal">
+            <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Calculadora</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
+              Calcula tu mensualidad estimada
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">
+              Selecciona el nivel y los servicios que te interesan. Obtendrás una estimación inmediata de la pensión mensual, sin compromiso.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-600">
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>Incluye pensión, transporte, comedor y talleres.</li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>No incluye matrícula, seguro, uniforme ni materiales.</li>
+              <li class="flex items-start gap-3"><span class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-600"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg></span>El monto final se confirma al momento de la matrícula.</li>
+            </ul>
+          </div>
+
+          <div class="reveal delay-1">
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-8">
+              <form id="estimator-form" class="grid gap-5 sm:grid-cols-2">
+                <div class="sm:col-span-2">
+                  <label for="est-nivel" class="mb-1.5 block text-sm font-semibold text-slate-700">Nivel educativo</label>
+                  <select id="est-nivel" name="nivel"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10">
+                    <option value="850">Inicial · S/ 850 / mes</option>
+                    <option value="980" selected>Primaria · S/ 980 / mes</option>
+                    <option value="1150">Secundaria · S/ 1,150 / mes</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="est-transporte" class="mb-1.5 block text-sm font-semibold text-slate-700">Transporte escolar</label>
+                  <select id="est-transporte" name="transporte"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10">
+                    <option value="0">Sin transporte</option>
+                    <option value="180">Zona A · S/ 180</option>
+                    <option value="230" selected>Zona B · S/ 230</option>
+                    <option value="280">Zona C · S/ 280</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="est-comedor" class="mb-1.5 block text-sm font-semibold text-slate-700">Comedor</label>
+                  <select id="est-comedor" name="comedor"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10">
+                    <option value="0">Sin comedor</option>
+                    <option value="120">Refrigerio · S/ 120</option>
+                    <option value="320" selected>Almuerzo · S/ 320</option>
+                    <option value="420">Refrigerio + almuerzo · S/ 420</option>
+                  </select>
+                </div>
+
+                <div class="sm:col-span-2">
+                  <label for="est-talleres" class="mb-1.5 block text-sm font-semibold text-slate-700">Talleres extracurriculares</label>
+                  <select id="est-talleres" name="talleres"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10">
+                    <option value="0">Ninguno</option>
+                    <option value="1" selected>1 taller · S/ 150</option>
+                    <option value="2">2 talleres · S/ 300</option>
+                    <option value="3">3 talleres · S/ 450</option>
+                  </select>
+                </div>
+              </form>
+
+              <div class="mt-6 rounded-2xl border border-brand-100 bg-brand-50 p-5">
+                <div class="flex flex-wrap items-end justify-between gap-3">
+                  <div>
+                    <p class="text-xs font-bold uppercase tracking-wider text-brand-700">Mensualidad estimada</p>
+                    <p id="est-total" class="mt-1 font-display text-4xl font-extrabold tracking-tight text-brand-950">S/ 1,680</p>
+                  </div>
+                  <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 shadow-sm">por mes</span>
+                </div>
+                <p id="est-detalle" class="mt-3 border-t border-brand-100 pt-3 text-xs leading-relaxed text-slate-600">
+                  Pensión S/ 980 + Transporte S/ 230 + Comedor S/ 320 + 1 taller S/ 150
+                </p>
+              </div>
+
+              <a href="index.html#contacto" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Solicitar una cotización formal
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BECAS Y DESCUENTOS
+    ============================================================= -->
+    <section id="becas" class="bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Apoyo a las familias</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Becas y descuentos vigentes
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Creemos en el talento y en el esfuerzo. Por eso contamos con beneficios para que la excelencia esté al alcance de más familias.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 md:grid-cols-3">
+          <article class="reveal rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-violet-50 text-violet-600">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+            </span>
+            <p class="mt-5 font-display text-3xl font-extrabold text-brand-950">10%</p>
+            <h3 class="mt-1 font-display text-lg font-bold text-brand-950">Descuento por hermanos</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              A partir del segundo hermano matriculado, la pensión del hermano menor recibe un 10% de descuento durante todo el año.
+            </p>
+          </article>
+
+          <article class="reveal delay-1 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-accent-100 text-accent-600">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></svg>
+            </span>
+            <p class="mt-5 font-display text-3xl font-extrabold text-brand-950">Hasta 25%</p>
+            <h3 class="mt-1 font-display text-lg font-bold text-brand-950">Beca de excelencia</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Para estudiantes con alto rendimiento académico y compromiso con la comunidad. Requiere evaluación y entrevista familiar.
+            </p>
+          </article>
+
+          <article class="reveal delay-2 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2" /><path d="M2 10h20" /></svg>
+            </span>
+            <p class="mt-5 font-display text-3xl font-extrabold text-brand-950">10%</p>
+            <h3 class="mt-1 font-display text-lg font-bold text-brand-950">Pago anual anticipado</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Si eliges pagar el año completo al momento de la matrícula, obtienes un 10% de descuento sobre el total de las pensiones.
+            </p>
+          </article>
+        </div>
+
+        <p class="mx-auto mt-8 max-w-3xl text-center text-xs leading-relaxed text-slate-500">
+          Los descuentos no son acumulables entre sí, salvo el descuento por pago anual. Las becas tienen cupos limitados y se renuevan cada año según el desempeño del estudiante.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FORMAS DE PAGO
+    ============================================================= -->
+    <section id="pagos" class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-accent-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-700">Facilidades</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Formas de pago
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            Elige el canal que prefieras. Todos los pagos se registran en el portal de familias.
+          </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="reveal rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18" /><path d="M5 21V7l7-4 7 4v14" /><path d="M9 21v-4h6v4" /><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01" /></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-brand-950">Transferencia bancaria</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">BCP, BBVA e Interbank. Sin comisión adicional.</p>
+          </article>
+
+          <article class="reveal delay-1 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2" /><path d="M2 10h20" /></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-brand-950">Tarjeta de crédito</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Hasta 6 cuotas sin interés, según el banco emisor.</p>
+          </article>
+
+          <article class="reveal delay-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9" /><path d="M3 4v5h5" /><path d="M12 7v5l3 2" /></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-brand-950">Débito automático</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Se carga la pensión el día 5 de cada mes. Sin costo.</p>
+          </article>
+
+          <article class="reveal delay-3 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold text-brand-950">Portal de familias</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Paga en línea 24/7 y descarga tus comprobantes al instante.</p>
+          </article>
+        </div>
+
+        <div class="mx-auto mt-8 flex max-w-3xl items-start gap-3 rounded-2xl border border-brand-100 bg-brand-50 p-4 text-xs leading-relaxed text-slate-600">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+          <p>Los pagos realizados después de la fecha de vencimiento pueden generar un recargo administrativo. Si necesitas un acuerdo de pago especial, contacta a administración antes del vencimiento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PREGUNTAS FRECUENTES
+    ============================================================= -->
+    <section id="preguntas" class="bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+
+          <div class="reveal">
+            <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Dudas frecuentes</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
+              Preguntas sobre precios y pagos
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">
+              Resolvemos las dudas más comunes. Si necesitas algo más específico, nuestro equipo de admisiones está a tu disposición.
+            </p>
+            <a href="index.html#contacto" class="mt-7 inline-flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+              Hablar con admisiones
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+
+          <div class="reveal delay-1 space-y-3">
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿La matrícula se paga cada año?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Sí. La matrícula es un pago único que se realiza al inicio de cada año escolar y reserva la vacante del estudiante. No se descuenta de las pensiones.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿Qué incluye la pensión mensual?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Incluye el programa académico y bilingüe, el uso de laboratorios y aulas digitales, biblioteca, acompañamiento psicológico, enfermería y la escuela para padres. No incluye transporte, comedor, talleres opcionales, uniforme ni materiales.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿Los precios pueden cambiar durante el año?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                La pensión y la matrícula se fijan al momento de la matrícula y se mantienen durante todo el año escolar. Los servicios opcionales pueden actualizar su tarifa al inicio de cada periodo, con aviso previo a las familias.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿Cómo solicito una beca de excelencia?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Debes completar la solicitud de admisión y adjuntar el historial académico de los últimos dos años. El comité de becas evalúa el rendimiento, la entrevista familiar y la disponibilidad de cupos. Los resultados se comunican en un plazo de 10 días hábiles.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿Cómo funciona el descuento por hermanos?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                A partir del segundo hermano matriculado, se aplica un 10% de descuento sobre la pensión del hermano menor. El beneficio se mantiene mientras ambos hermanos estén matriculados y no es acumulable con la beca de excelencia.
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm open:border-brand-200 open:shadow-card">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 rounded-lg text-left text-sm font-bold text-brand-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                ¿Qué pasa si mi hijo se retira antes de fin de año?
+                <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600 transition group-open:rotate-45">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-sm leading-relaxed text-slate-600">
+                Debes presentar una carta de retiro con 30 días de anticipación. La matrícula no es reembolsable y las pensiones se facturan hasta el mes en que se hace efectivo el retiro, según lo establecido en el reglamento interno.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA
+    ============================================================= -->
+    <section class="bg-white py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-14 shadow-soft sm:px-12 lg:px-16 lg:py-16">
+          <div class="pointer-events-none absolute inset-0 bg-grid opacity-70" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-accent-400/20 blur-3xl" aria-hidden="true"></div>
+
+          <div class="relative grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+            <div>
+              <span class="inline-block rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-inset ring-white/25">
+                Cotización personalizada
+              </span>
+              <h2 class="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                ¿Quieres una cotización a tu medida?
+              </h2>
+              <p class="mt-4 max-w-xl text-base leading-relaxed text-brand-50/90">
+                Cuéntanos la edad de tu hijo y los servicios que necesitas. Te enviamos una cotización formal con rutas, menús y talleres disponibles.
+              </p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <a href="index.html#contacto" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600">
+                Solicitar cotización
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href="tel:+5112345678" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                (01) 234 5678
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="bg-brand-950 text-brand-100">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+
+        <!-- Marca -->
+        <div>
+          <a href="index.html" class="flex items-center gap-2.5">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white ring-1 ring-inset ring-white/15">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" /><path d="M22 10v6" />
+              </svg>
+            </span>
+            <span class="flex flex-col leading-none">
+              <span class="font-display text-lg font-extrabold tracking-tight text-white">Horizonte</span>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-300">Colegio</span>
+            </span>
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-brand-200/80">
+            Educación integral de excelencia desde 1991. Formamos personas íntegras, curiosas y comprometidas con su comunidad.
+          </p>
+          <div class="mt-6 flex gap-2.5">
+            <a href="#" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.43-4.94 8.43-9.94Z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.41-.66.8-.87 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.41.4.8.66 1.35.87.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.41.66-.8.87-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36Zm5.2-3.2a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42a2.5 2.5 0 0 0-1.76 1.77A26.1 26.1 0 0 0 2 12a26.1 26.1 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.1 26.1 0 0 0 22 12a26.1 26.1 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Colegio</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="index.html#nosotros" class="text-brand-200/80 transition hover:text-white">Nuestra propuesta</a></li>
+            <li><a href="index.html#niveles" class="text-brand-200/80 transition hover:text-white">Niveles educativos</a></li>
+            <li><a href="servicios.html" class="text-brand-200/80 transition hover:text-white">Servicios</a></li>
+            <li><a href="precios.html" class="text-brand-200/80 transition hover:text-white">Precios</a></li>
+            <li><a href="index.html#vida" class="text-brand-200/80 transition hover:text-white">Vida escolar</a></li>
+            <li><a href="index.html#noticias" class="text-brand-200/80 transition hover:text-white">Noticias y eventos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Admisiones</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="index.html#admision" class="text-brand-200/80 transition hover:text-white">Proceso de admisión</a></li>
+            <li><a href="index.html#contacto" class="text-brand-200/80 transition hover:text-white">Agenda una visita</a></li>
+            <li><a href="precios.html#becas" class="text-brand-200/80 transition hover:text-white">Becas y descuentos</a></li>
+            <li><a href="precios.html#preguntas" class="text-brand-200/80 transition hover:text-white">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Contacto</h3>
+          <ul class="mt-5 space-y-3 text-sm text-brand-200/80">
+            <li>Av. Los Álamos 1250,<br />Miraflores, Lima</li>
+            <li><a href="tel:+5112345678" class="transition hover:text-white">(01) 234 5678</a></li>
+            <li><a href="mailto:admisiones@colegiohorizonte.edu" class="break-all transition hover:text-white">admisiones@colegiohorizonte.edu</a></li>
+            <li>Lun – Vie · 7:30 a.m. – 4:00 p.m.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-brand-300/70 sm:flex-row">
+        <p>© <span id="year">2026</span> Colegio Horizonte. Todos los derechos reservados.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <a href="#" class="transition hover:text-white">Política de privacidad</a>
+          <a href="#" class="transition hover:text-white">Términos de uso</a>
+          <a href="#" class="transition hover:text-white">Libro de reclamaciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button id="back-to-top" type="button" aria-label="Volver arriba"
+    class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-1 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------- Menú móvil ---------- */
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+
+      function closeMenu() {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          menuToggle.setAttribute('aria-expanded', 'true');
+          menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+        }
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      /* ---------- Header con fondo al hacer scroll ---------- */
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('back-to-top');
+
+      function onScroll() {
+        if (window.scrollY > 24) {
+          navbar.classList.add('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.remove('border-transparent');
+        } else {
+          navbar.classList.remove('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.add('border-transparent');
+        }
+
+        if (window.scrollY > 500) {
+          backToTop.classList.remove('hidden');
+          backToTop.classList.add('grid');
+        } else {
+          backToTop.classList.add('hidden');
+          backToTop.classList.remove('grid');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* ---------- Animación al hacer scroll ---------- */
+      const revealItems = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealItems.forEach(function (item) { observer.observe(item); });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+      }
+
+      /* ---------- Selector mensual / anual ---------- */
+      const billingButtons = document.querySelectorAll('[data-billing]');
+      const numberFmt = new Intl.NumberFormat('es-PE');
+
+      function setBilling(mode) {
+        document.querySelectorAll('.price-amount').forEach(function (el) {
+          const value = Number(el.getAttribute('data-' + mode));
+          el.textContent = numberFmt.format(value);
+        });
+
+        document.querySelectorAll('.price-period').forEach(function (el) {
+          el.textContent = mode === 'monthly' ? '/ mes' : '/ año';
+        });
+
+        document.querySelectorAll('.price-monthly-note').forEach(function (el) {
+          el.classList.toggle('hidden', mode !== 'monthly');
+        });
+
+        document.querySelectorAll('.price-annual-note').forEach(function (el) {
+          el.classList.toggle('hidden', mode === 'monthly');
+        });
+
+        billingButtons.forEach(function (btn) {
+          const active = btn.getAttribute('data-billing') === mode;
+          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+          btn.classList.toggle('bg-brand-600', active);
+          btn.classList.toggle('text-white', active);
+          btn.classList.toggle('shadow', active);
+          btn.classList.toggle('text-slate-600', !active);
+          btn.classList.toggle('hover:text-brand-700', !active);
+        });
+      }
+
+      billingButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          setBilling(btn.getAttribute('data-billing'));
+        });
+      });
+
+      setBilling('monthly');
+
+      /* ---------- Estimador de mensualidad ---------- */
+      const estimatorForm = document.getElementById('estimator-form');
+      const estTotal = document.getElementById('est-total');
+      const estDetalle = document.getElementById('est-detalle');
+      const currencyFmt = new Intl.NumberFormat('es-PE', {
+        style: 'currency',
+        currency: 'PEN',
+        maximumFractionDigits: 0,
+      });
+
+      function updateEstimate() {
+        const nivel = Number(document.getElementById('est-nivel').value);
+        const transporte = Number(document.getElementById('est-transporte').value);
+        const comedor = Number(document.getElementById('est-comedor').value);
+        const talleres = Number(document.getElementById('est-talleres').value);
+        const total = nivel + transporte + comedor + talleres * 150;
+
+        const parts = ['Pensión ' + currencyFmt.format(nivel)];
+        if (transporte > 0) parts.push('Transporte ' + currencyFmt.format(transporte));
+        if (comedor > 0) parts.push('Comedor ' + currencyFmt.format(comedor));
+        if (talleres > 0) {
+          parts.push(talleres + (talleres === 1 ? ' taller ' : ' talleres ') + currencyFmt.format(talleres * 150));
+        }
+
+        estTotal.textContent = currencyFmt.format(total);
+        estDetalle.textContent = parts.join(' + ');
+      }
+
+      estimatorForm.addEventListener('change', updateEstimate);
+      updateEstimate();
+
+      /* ---------- Año dinámico ---------- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+
+</body>
+</html>
