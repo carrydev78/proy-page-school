@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colegio Horizonte | Educación que inspira</title>
+  <meta name="description" content="Colegio Horizonte: formación integral en Inicial, Primaria y Secundaria. Excelencia académica, valores y acompañamiento personalizado." />
+  <meta name="theme-color" content="#1b62f0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231b62f0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 10 12 5 2 10l10 5 10-5Z'/%3E%3Cpath d='M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5'/%3E%3C/svg%3E" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- TailwindCSS (CDN para desarrollo). En producción se recomienda compilarlo. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eef6ff', 100: '#d9eaff', 200: '#bcdcff', 300: '#8ec6ff',
+              400: '#59a5ff', 500: '#3282fb', 600: '#1b62f0', 700: '#144ee0',
+              800: '#1740b5', 900: '#193a8e', 950: '#142555',
+            },
+            accent: {
+              50: '#fffbeb', 100: '#fef3c7', 200: '#fde68a', 300: '#fcd34d',
+              400: '#fbbf24', 500: '#f59e0b', 600: '#d97706', 700: '#b45309',
+            },
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(20, 37, 85, 0.18)',
+            card: '0 2px 8px -2px rgba(20, 37, 85, 0.08), 0 12px 32px -12px rgba(20, 37, 85, 0.16)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Animación de aparición al hacer scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+
+    /* Patrón decorativo */
+    .bg-grid {
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .bg-dots {
+      background-image: radial-gradient(rgba(27, 98, 240, 0.18) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    /* Barra de desplazamiento */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Accesibilidad: respetar preferencia de movimiento reducido */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <!-- Si JavaScript está desactivado, mostrar todo el contenido -->
+  <noscript>
+    <style>
+      .reveal { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+</head>
+
+<body class="bg-white font-sans text-slate-700 antialiased selection:bg-brand-200 selection:text-brand-950">
+
+  <!-- ============================================================
+       HEADER / NAVEGACIÓN
+  ============================================================= -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-300">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <nav class="mt-3 flex items-center justify-between rounded-2xl border border-transparent px-4 py-3 transition-all duration-300 sm:px-5" id="navbar" aria-label="Navegación principal">
+
+        <!-- Logo -->
+        <a href="#inicio" class="flex items-center gap-2.5 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+          <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+              <path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+              <path d="M22 10v6" />
+            </svg>
+          </span>
+          <span class="flex flex-col leading-none">
+            <span class="font-display text-lg font-extrabold tracking-tight text-brand-950">Horizonte</span>
+            <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-slate-500">Colegio</span>
+          </span>
+        </a>
+
+        <!-- Enlaces escritorio -->
+        <ul class="hidden items-center gap-1 lg:flex">
+          <li><a href="#inicio" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="#nosotros" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="#niveles" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="#vida" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Vida escolar</a></li>
+          <li><a href="#noticias" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Noticias</a></li>
+          <li><a href="#contacto" class="rounded-lg px-3.5 py-2 text-sm font-semibold text-slate-600 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2">
+          <a href="#contacto" class="hidden rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-brand-600/35 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:inline-flex">
+            Solicitar admisión
+          </a>
+
+          <!-- Botón menú móvil -->
+          <button id="menu-toggle" type="button"
+            class="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 bg-white text-slate-700 transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 lg:hidden"
+            aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú de navegación">
+            <svg id="icon-open" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+            <svg id="icon-close" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Menú móvil -->
+      <div id="mobile-menu" class="mt-2 hidden overflow-hidden rounded-2xl border border-slate-200 bg-white p-3 shadow-card lg:hidden">
+        <ul class="flex flex-col gap-1">
+          <li><a href="#inicio" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Inicio</a></li>
+          <li><a href="#nosotros" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Nosotros</a></li>
+          <li><a href="#niveles" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Niveles</a></li>
+          <li><a href="#vida" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Vida escolar</a></li>
+          <li><a href="#noticias" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Noticias</a></li>
+          <li><a href="#contacto" class="mobile-link block rounded-xl px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-brand-50 hover:text-brand-700">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="mobile-link mt-2 block rounded-xl bg-brand-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-700">
+          Solicitar admisión
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO
+    ============================================================= -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-brand-50 via-white to-white pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-24">
+      <!-- Decoración -->
+      <div class="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-200/50 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-32 top-40 h-80 w-80 rounded-full bg-accent-200/40 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-dots opacity-40" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-center gap-14 lg:grid-cols-2 lg:gap-10">
+
+          <!-- Texto -->
+          <div class="reveal">
+            <span class="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700 shadow-sm backdrop-blur">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-500 opacity-75"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-brand-600"></span>
+              </span>
+              Admisiones 2027 abiertas
+            </span>
+
+            <h1 class="mt-6 font-display text-4xl font-extrabold leading-[1.08] tracking-tight text-brand-950 sm:text-5xl lg:text-6xl">
+              Formamos mentes curiosas,
+              <span class="relative whitespace-nowrap">
+                <span class="relative z-10 bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent">corazones</span>
+                <svg class="absolute -bottom-2 left-0 z-0 w-full text-accent-300" viewBox="0 0 300 12" fill="none" aria-hidden="true">
+                  <path d="M2 9c60-6 130-8 296-4" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+                </svg>
+              </span>
+              grandes.
+            </h1>
+
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              En el Colegio Horizonte acompañamos a cada estudiante a descubrir su potencial, con una educación integral que combina excelencia académica, valores y experiencias que dejan huella.
+            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a href="#contacto" class="group inline-flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Agenda una visita
+                <svg class="h-4 w-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a href="#niveles" class="group inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                <span class="grid h-6 w-6 place-items-center rounded-full bg-brand-100 text-brand-700">
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5.14v13.72c0 .8.87 1.3 1.56.9l11.1-6.86a1.05 1.05 0 0 0 0-1.8L9.56 4.24A1.05 1.05 0 0 0 8 5.14Z" />
+                  </svg>
+                </span>
+                Conoce nuestros niveles
+              </a>
+            </div>
+
+            <!-- Prueba social -->
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <div class="flex items-center">
+                <img class="h-11 w-11 rounded-full border-2 border-white object-cover shadow" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+                <img class="-ml-3 h-11 w-11 rounded-full border-2 border-white object-cover shadow" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+                <img class="-ml-3 h-11 w-11 rounded-full border-2 border-white object-cover shadow" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+                <span class="-ml-3 grid h-11 w-11 place-items-center rounded-full border-2 border-white bg-brand-600 text-xs font-bold text-white shadow">+1k</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-1 text-accent-500" aria-label="Calificación 4.9 de 5">
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                </div>
+                <p class="mt-1 text-sm text-slate-500"><span class="font-bold text-brand-950">4.9/5</span> · Más de 1.200 familias confían en nosotros</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Imagen -->
+          <div class="reveal delay-2 relative">
+            <div class="relative mx-auto max-w-lg lg:max-w-none">
+              <div class="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-tr from-brand-200/60 via-white to-accent-200/50 blur-2xl" aria-hidden="true"></div>
+
+              <img class="aspect-[4/3.4] w-full rounded-[2rem] object-cover shadow-soft ring-1 ring-black/5"
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80"
+                alt="Estudiantes trabajando juntos en un aula luminosa" width="1200" height="1020" />
+
+              <!-- Tarjeta flotante: logros -->
+              <div class="absolute -left-3 bottom-6 flex items-center gap-3 rounded-2xl border border-slate-100 bg-white/95 p-4 shadow-card backdrop-blur sm:-left-8">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-100 text-emerald-600">
+                  <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="font-display text-xl font-extrabold leading-none text-brand-950">98%</p>
+                  <p class="mt-1 text-xs font-medium text-slate-500">Ingreso a universidades</p>
+                </div>
+              </div>
+
+              <!-- Tarjeta flotante: docentes -->
+              <div class="absolute -right-2 top-8 rounded-2xl border border-slate-100 bg-white/95 p-3.5 shadow-card backdrop-blur sm:-right-6">
+                <div class="flex items-center gap-2">
+                  <span class="grid h-9 w-9 place-items-center rounded-lg bg-accent-100 text-accent-600">
+                    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </span>
+                  <div>
+                    <p class="font-display text-sm font-extrabold leading-none text-brand-950">+60</p>
+                    <p class="mt-1 text-[11px] font-medium text-slate-500">Docentes certificados</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ESTADÍSTICAS
+    ============================================================= -->
+    <section class="relative border-y border-slate-100 bg-white py-12">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <dl class="grid grid-cols-2 gap-8 lg:grid-cols-4">
+          <div class="reveal text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="35" data-suffix="+">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Años formando generaciones</dt>
+          </div>
+          <div class="reveal delay-1 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="1200" data-suffix="+">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Estudiantes en nuestras aulas</dt>
+          </div>
+          <div class="reveal delay-2 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="98" data-suffix="%">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Egresados con cupo universitario</dt>
+          </div>
+          <div class="reveal delay-3 text-center lg:text-left">
+            <dd class="font-display text-4xl font-extrabold tracking-tight text-brand-950"><span data-count="25" data-suffix="+">0</span></dd>
+            <dt class="mt-1 text-sm font-medium text-slate-500">Talleres y clubes extracurriculares</dt>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         NOSOTROS / PROPUESTA EDUCATIVA
+    ============================================================= -->
+    <section id="nosotros" class="relative overflow-hidden bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Nuestra propuesta</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Una educación pensada para la vida
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
+            No solo enseñamos contenidos: cultivamos habilidades, pensamiento crítico y valores que acompañan a nuestros estudiantes mucho más allá del aula.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Card 1 -->
+          <article class="reveal group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Excelencia académica</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Un currículo riguroso y actualizado, con acompañamiento pedagógico personalizado para que cada estudiante alcance su máximo potencial.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="reveal delay-1 group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Formación en valores</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Fomentamos el respeto, la empatía y la responsabilidad social a través de proyectos de servicio y convivencia diaria.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="reveal delay-2 group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z" />
+                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Arte y creatividad</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Música, teatro, artes visuales y robótica para que la imaginación y la expresión encuentren su espacio todos los días.
+            </p>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="reveal group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Ciudadanía global</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Idiomas, intercambios culturales y una mirada abierta al mundo para formar personas preparadas para los desafíos de hoy.
+            </p>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="reveal delay-1 group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                <path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Deporte y bienestar</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Instalaciones deportivas de primer nivel y programas de salud emocional que cuidan el cuerpo y la mente de nuestros alumnos.
+            </p>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="reveal delay-2 group rounded-2xl border border-slate-200/80 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card">
+            <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-50 text-brand-600 transition group-hover:bg-brand-600 group-hover:text-white">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="20" height="14" x="2" y="7" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display text-lg font-bold text-brand-950">Tecnología e innovación</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              Aulas digitales, laboratorios de ciencias y programación desde edades tempranas para aprender haciendo.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         NIVELES EDUCATIVOS
+    ============================================================= -->
+    <section id="niveles" class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <span class="inline-block rounded-full bg-accent-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-accent-700">Niveles educativos</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+              Un camino continuo, de 3 a 17 años
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">
+              Acompañamos cada etapa con un proyecto educativo articulado, donde los aprendizajes se construyen de forma progresiva y significativa.
+            </p>
+          </div>
+          <a href="#contacto" class="inline-flex shrink-0 items-center gap-2 rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500">
+            Descargar plan de estudios
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="M7 10l5 5 5-5" /><path d="M12 15V3" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="mt-12 grid gap-7 md:grid-cols-3">
+          <!-- Inicial -->
+          <article class="reveal group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <div class="relative overflow-hidden">
+              <img class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1587654780291-39c9404d746b?auto=format&fit=crop&w=800&q=80"
+                alt="Niños pequeños jugando y aprendiendo en el nivel inicial" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-brand-700 shadow-sm backdrop-blur">3 a 5 años</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-brand-950">Nivel Inicial</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Un espacio seguro y estimulante donde el juego, la exploración y el afecto son el motor del aprendizaje.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Estimulación temprana y psicomotricidad</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Inglés desde los 3 años</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Talleres de arte y música</li>
+              </ul>
+              <a href="#contacto" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Más información
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Primaria -->
+          <article class="reveal delay-1 group overflow-hidden rounded-3xl border-2 border-brand-600 bg-white shadow-card transition duration-300 hover:-translate-y-1.5">
+            <div class="relative overflow-hidden">
+              <img class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
+                alt="Estudiantes de primaria levantando la mano en clase" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-full bg-brand-600 px-3 py-1 text-xs font-bold text-white shadow-sm">6 a 11 años</span>
+              <span class="absolute right-4 top-4 rounded-full bg-accent-400 px-3 py-1 text-xs font-bold text-brand-950 shadow-sm">Más elegido</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-brand-950">Nivel Primaria</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Consolidamos hábitos de estudio y autonomía con proyectos interdisciplinarios que despiertan la curiosidad.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Programa bilingüe intensivo</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Laboratorio de ciencias y robótica</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Deportes y educación emocional</li>
+              </ul>
+              <a href="#contacto" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Más información
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Secundaria -->
+          <article class="reveal delay-2 group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <div class="relative overflow-hidden">
+              <img class="h-56 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+                alt="Estudiante de secundaria leyendo en la biblioteca" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1 text-xs font-bold text-brand-700 shadow-sm backdrop-blur">12 a 17 años</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-display text-xl font-bold text-brand-950">Nivel Secundaria</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Preparamos para la universidad y la vida con orientación vocacional, pensamiento crítico y liderazgo.
+              </p>
+              <ul class="mt-4 space-y-2 text-sm text-slate-600">
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Orientación vocacional personalizada</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Convenios con universidades</li>
+                <li class="flex items-start gap-2"><svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>Certificaciones internacionales</li>
+              </ul>
+              <a href="#contacto" class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Más información
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VIDA ESCOLAR / GALERÍA
+    ============================================================= -->
+    <section id="vida" class="relative overflow-hidden bg-brand-950 py-20 text-white lg:py-28">
+      <div class="pointer-events-none absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-20 top-10 h-72 w-72 rounded-full bg-brand-600/30 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-accent-500/20 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid items-end gap-6 md:grid-cols-2">
+          <div>
+            <span class="inline-block rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-100 ring-1 ring-inset ring-white/20">Vida escolar</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.6rem]">
+              El día a día en Horizonte
+            </h2>
+          </div>
+          <p class="text-base leading-relaxed text-brand-100/80 md:text-right">
+            Aprendizaje, amistad y descubrimiento en cada rincón del colegio. Un ambiente donde todos se sienten parte.
+          </p>
+        </div>
+
+        <div class="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:grid-rows-2">
+          <figure class="reveal group relative col-span-2 row-span-2 overflow-hidden rounded-3xl">
+            <img class="h-full min-h-[280px] w-full object-cover transition duration-700 group-hover:scale-105 lg:min-h-full"
+              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1000&q=80"
+              alt="Ceremonia de graduación de estudiantes" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/10 to-transparent"></div>
+            <figcaption class="absolute bottom-0 left-0 p-6">
+              <p class="text-xs font-bold uppercase tracking-wider text-accent-300">Comunidad</p>
+              <p class="mt-1 font-display text-xl font-bold">Graduación 2026</p>
+            </figcaption>
+          </figure>
+
+          <figure class="reveal delay-1 group relative overflow-hidden rounded-3xl">
+            <img class="h-44 w-full object-cover transition duration-700 group-hover:scale-105 lg:h-full"
+              src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=700&q=80"
+              alt="Estudiantes colaborando en un proyecto escolar" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent"></div>
+            <figcaption class="absolute bottom-0 left-0 p-4 text-sm font-semibold">Proyectos en equipo</figcaption>
+          </figure>
+
+          <figure class="reveal delay-2 group relative overflow-hidden rounded-3xl">
+            <img class="h-44 w-full object-cover transition duration-700 group-hover:scale-105 lg:h-full"
+              src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=700&q=80"
+              alt="Estudiantes practicando deporte en la pista atlética" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent"></div>
+            <figcaption class="absolute bottom-0 left-0 p-4 text-sm font-semibold">Deporte y salud</figcaption>
+          </figure>
+
+          <figure class="reveal delay-3 group relative col-span-2 overflow-hidden rounded-3xl">
+            <img class="h-44 w-full object-cover transition duration-700 group-hover:scale-105 lg:h-full"
+              src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1000&q=80"
+              alt="Laboratorio de ciencias con material de experimentación" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/70 to-transparent"></div>
+            <figcaption class="absolute bottom-0 left-0 p-4 text-sm font-semibold">Ciencia y experimentación</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIOS
+    ============================================================= -->
+    <section class="bg-white py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Testimonios</span>
+          <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+            Familias que son parte de Horizonte
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-slate-600">
+            La confianza de nuestras familias es el mejor reflejo de nuestro trabajo.
+          </p>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <!-- Testimonio 1 -->
+          <figure class="reveal flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/60 p-7 transition hover:border-brand-200 hover:bg-white hover:shadow-card">
+            <div>
+              <div class="flex gap-1 text-accent-500" aria-label="5 de 5 estrellas">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+              </div>
+              <blockquote class="mt-4 text-sm leading-relaxed text-slate-700">
+                “Lo que más valoro es el acompañamiento cercano. Mi hija llegó tímida y hoy es delegada de su clase. El colegio la vio y la hizo crecer.”
+              </blockquote>
+            </div>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+              <img class="h-11 w-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+              <div>
+                <p class="text-sm font-bold text-brand-950">Carolina Méndez</p>
+                <p class="text-xs text-slate-500">Madre de familia · Primaria</p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <!-- Testimonio 2 -->
+          <figure class="reveal delay-1 flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/60 p-7 transition hover:border-brand-200 hover:bg-white hover:shadow-card">
+            <div>
+              <div class="flex gap-1 text-accent-500" aria-label="5 de 5 estrellas">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+              </div>
+              <blockquote class="mt-4 text-sm leading-relaxed text-slate-700">
+                “La orientación vocacional fue clave para mi hijo. Descubrió su pasión por la ingeniería y hoy estudia con una beca completa.”
+              </blockquote>
+            </div>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+              <img class="h-11 w-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+              <div>
+                <p class="text-sm font-bold text-brand-950">Jorge Salazar</p>
+                <p class="text-xs text-slate-500">Padre de familia · Secundaria</p>
+              </div>
+            </figcaption>
+          </figure>
+
+          <!-- Testimonio 3 -->
+          <figure class="reveal delay-2 flex flex-col justify-between rounded-2xl border border-slate-200 bg-slate-50/60 p-7 transition hover:border-brand-200 hover:bg-white hover:shadow-card">
+            <div>
+              <div class="flex gap-1 text-accent-500" aria-label="5 de 5 estrellas">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2Z"/></svg>
+              </div>
+              <blockquote class="mt-4 text-sm leading-relaxed text-slate-700">
+                “Elegimos Horizonte por su proyecto bilingüe y nos quedamos por la calidez humana. Se siente como una gran familia.”
+              </blockquote>
+            </div>
+            <figcaption class="mt-6 flex items-center gap-3 border-t border-slate-200 pt-5">
+              <img class="h-11 w-11 rounded-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="" loading="lazy" />
+              <div>
+                <p class="text-sm font-bold text-brand-950">Lucía Fernández</p>
+                <p class="text-xs text-slate-500">Madre de familia · Inicial</p>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         NOTICIAS
+    ============================================================= -->
+    <section id="noticias" class="bg-slate-50/70 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Actualidad</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl lg:text-[2.6rem]">
+              Noticias y próximos eventos
+            </h2>
+          </div>
+          <a href="#" class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-brand-600 transition hover:gap-3 hover:text-brand-700">
+            Ver todas las noticias
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </div>
+
+        <div class="mt-12 grid gap-7 md:grid-cols-3">
+          <!-- Noticia 1 -->
+          <article class="reveal group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <a href="#" class="relative block overflow-hidden">
+              <img class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80"
+                alt="Feria de ciencias con estudiantes presentando proyectos" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-lg bg-white px-2.5 py-1.5 text-center leading-none shadow-sm">
+                <span class="block font-display text-lg font-extrabold text-brand-700">18</span>
+                <span class="mt-0.5 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Nov</span>
+              </span>
+            </a>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Académico</span>
+              <h3 class="mt-2 font-display text-lg font-bold leading-snug text-brand-950">
+                <a href="#" class="transition hover:text-brand-700">Gran Feria de Ciencias 2026: innovación hecha por estudiantes</a>
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                Más de 80 proyectos de investigación y tecnología creados por alumnos de primaria y secundaria.
+              </p>
+              <a href="#" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Leer más
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Noticia 2 -->
+          <article class="reveal delay-1 group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <a href="#" class="relative block overflow-hidden">
+              <img class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80"
+                alt="Equipo de básquet del colegio celebrando" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-lg bg-white px-2.5 py-1.5 text-center leading-none shadow-sm">
+                <span class="block font-display text-lg font-extrabold text-brand-700">05</span>
+                <span class="mt-0.5 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Dic</span>
+              </span>
+            </a>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Deportes</span>
+              <h3 class="mt-2 font-display text-lg font-bold leading-snug text-brand-950">
+                <a href="#" class="transition hover:text-brand-700">Nuestro equipo de básquet clasifica a la final regional</a>
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                Una temporada histórica para la selección escolar, que competirá por el título el próximo mes.
+              </p>
+              <a href="#" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Leer más
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Noticia 3 -->
+          <article class="reveal delay-2 group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1.5 hover:shadow-card">
+            <a href="#" class="relative block overflow-hidden">
+              <img class="h-48 w-full object-cover transition duration-500 group-hover:scale-105"
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
+                alt="Docentes en una jornada de capacitación" loading="lazy" />
+              <span class="absolute left-4 top-4 rounded-lg bg-white px-2.5 py-1.5 text-center leading-none shadow-sm">
+                <span class="block font-display text-lg font-extrabold text-brand-700">12</span>
+                <span class="mt-0.5 block text-[10px] font-bold uppercase tracking-wide text-slate-500">Dic</span>
+              </span>
+            </a>
+            <div class="flex flex-1 flex-col p-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600">Comunidad</span>
+              <h3 class="mt-2 font-display text-lg font-bold leading-snug text-brand-950">
+                <a href="#" class="transition hover:text-brand-700">Jornada de puertas abiertas para familias 2027</a>
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate-600">
+                Recorre nuestras instalaciones, conoce a los docentes y descubre nuestro proyecto educativo.
+              </p>
+              <a href="#" class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition hover:gap-2.5 hover:text-brand-700">
+                Leer más
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CTA ADMISIONES
+    ============================================================= -->
+    <section id="admision" class="bg-white py-20 lg:py-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 px-6 py-14 shadow-soft sm:px-12 lg:px-16 lg:py-16">
+          <div class="pointer-events-none absolute inset-0 bg-grid opacity-70" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-2xl" aria-hidden="true"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-10 h-72 w-72 rounded-full bg-accent-400/20 blur-3xl" aria-hidden="true"></div>
+
+          <div class="relative grid items-center gap-8 lg:grid-cols-[1.4fr_1fr]">
+            <div>
+              <span class="inline-block rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-white ring-1 ring-inset ring-white/25">
+                Proceso de admisión 2027
+              </span>
+              <h2 class="mt-5 font-display text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
+                El futuro de tu hijo comienza con una visita.
+              </h2>
+              <p class="mt-4 max-w-xl text-base leading-relaxed text-brand-50/90">
+                Agenda una entrevista personalizada, conoce nuestro campus y resuelve todas tus dudas con el equipo de admisiones.
+              </p>
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <a href="#contacto" class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-sm font-bold text-brand-700 shadow-lg transition hover:-translate-y-0.5 hover:bg-brand-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600">
+                Solicitar información
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+              <a href="tel:+5112345678" class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+                </svg>
+                (01) 234 5678
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO
+    ============================================================= -->
+    <section id="contacto" class="relative overflow-hidden bg-slate-50 py-20 lg:py-28">
+      <div class="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-brand-100/70 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-16">
+
+          <!-- Información -->
+          <div class="reveal">
+            <span class="inline-block rounded-full bg-brand-100 px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700">Contacto</span>
+            <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-brand-950 sm:text-4xl">
+              Estamos aquí para ayudarte
+            </h2>
+            <p class="mt-4 text-base leading-relaxed text-slate-600">
+              Escríbenos y un asesor de admisiones se pondrá en contacto contigo en menos de 24 horas hábiles.
+            </p>
+
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Dirección</p>
+                  <p class="mt-0.5 text-sm text-slate-600">Av. Los Álamos 1250, Miraflores</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Teléfono</p>
+                  <a href="tel:+5112345678" class="mt-0.5 block text-sm text-slate-600 transition hover:text-brand-600">(01) 234 5678</a>
+                  <a href="https://wa.me/51987654321" class="mt-0.5 block text-sm text-slate-600 transition hover:text-brand-600">WhatsApp: +51 987 654 321</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Correo</p>
+                  <a href="mailto:admisiones@colegiohorizonte.edu" class="mt-0.5 block text-sm text-slate-600 transition hover:text-brand-600">admisiones@colegiohorizonte.edu</a>
+                </div>
+              </li>
+              <li class="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                  <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm font-bold text-brand-950">Horario de atención</p>
+                  <p class="mt-0.5 text-sm text-slate-600">Lunes a viernes · 7:30 a.m. – 4:00 p.m.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Formulario -->
+          <div class="reveal delay-1">
+            <form id="contact-form" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-card sm:p-8" novalidate>
+              <h3 class="font-display text-xl font-bold text-brand-950">Solicita información</h3>
+              <p class="mt-1 text-sm text-slate-500">Completa el formulario y nos pondremos en contacto contigo.</p>
+
+              <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                <div class="sm:col-span-1">
+                  <label for="nombre" class="mb-1.5 block text-sm font-semibold text-slate-700">Nombre completo <span class="text-rose-500">*</span></label>
+                  <input id="nombre" name="nombre" type="text" required autocomplete="name" placeholder="Ana Pérez"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+                </div>
+                <div class="sm:col-span-1">
+                  <label for="telefono" class="mb-1.5 block text-sm font-semibold text-slate-700">Teléfono <span class="text-rose-500">*</span></label>
+                  <input id="telefono" name="telefono" type="tel" required autocomplete="tel" placeholder="+51 987 654 321"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="email" class="mb-1.5 block text-sm font-semibold text-slate-700">Correo electrónico <span class="text-rose-500">*</span></label>
+                  <input id="email" name="email" type="email" required autocomplete="email" placeholder="ana.perez@correo.com"
+                    class="w-full rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="nivel" class="mb-1.5 block text-sm font-semibold text-slate-700">Nivel de interés</label>
+                  <select id="nivel" name="nivel"
+                    class="w-full appearance-none rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10">
+                    <option value="">Selecciona un nivel</option>
+                    <option value="inicial">Nivel Inicial (3 a 5 años)</option>
+                    <option value="primaria">Nivel Primaria (6 a 11 años)</option>
+                    <option value="secundaria">Nivel Secundaria (12 a 17 años)</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2">
+                  <label for="mensaje" class="mb-1.5 block text-sm font-semibold text-slate-700">Mensaje</label>
+                  <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas saber…"
+                    class="w-full resize-none rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-500/10"></textarea>
+                </div>
+              </div>
+
+              <div class="mt-4 flex items-start gap-3">
+                <input id="privacidad" name="privacidad" type="checkbox" required
+                  class="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 text-brand-600 focus:ring-brand-500" />
+                <label for="privacidad" class="text-xs leading-relaxed text-slate-500">
+                  Acepto la <a href="#" class="font-semibold text-brand-600 underline-offset-2 hover:underline">política de privacidad</a> y el tratamiento de mis datos personales.
+                </label>
+              </div>
+
+              <button type="submit"
+                class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+                Enviar solicitud
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" />
+                </svg>
+              </button>
+
+              <!-- Mensaje de éxito -->
+              <div id="form-success" class="mt-4 hidden items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-800" role="status">
+                <svg class="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><path d="m22 4-10 10.01-3-3" />
+                </svg>
+                <p><strong>¡Gracias!</strong> Tu solicitud fue enviada. Un asesor de admisiones te contactará pronto.</p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================= -->
+  <footer class="bg-brand-950 text-brand-100">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+
+        <!-- Marca -->
+        <div>
+          <a href="#inicio" class="flex items-center gap-2.5">
+            <span class="grid h-10 w-10 place-items-center rounded-xl bg-white/10 text-white ring-1 ring-inset ring-white/15">
+              <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5" /><path d="M22 10v6" />
+              </svg>
+            </span>
+            <span class="flex flex-col leading-none">
+              <span class="font-display text-lg font-extrabold tracking-tight text-white">Horizonte</span>
+              <span class="text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-300">Colegio</span>
+            </span>
+          </a>
+          <p class="mt-5 max-w-xs text-sm leading-relaxed text-brand-200/80">
+            Educación integral de excelencia desde 1991. Formamos personas íntegras, curiosas y comprometidas con su comunidad.
+          </p>
+          <div class="mt-6 flex gap-2.5">
+            <a href="#" aria-label="Facebook" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.78-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.43-4.94 8.43-9.94Z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.41-.66.8-.87 1.35-.16.41-.35 1.03-.4 2.17-.06 1.24-.07 1.59-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.41.4.8.66 1.35.87.41.16 1.03.35 2.17.4 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.41.66-.8.87-1.35.16-.41.35-1.03.4-2.17.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.41-.16-1.03-.35-2.17-.4-1.24-.06-1.59-.07-4.74-.07Zm0 3.06a4.98 4.98 0 1 1 0 9.96 4.98 4.98 0 0 1 0-9.96Zm0 1.8a3.18 3.18 0 1 0 0 6.36 3.18 3.18 0 0 0 0-6.36Zm5.2-3.2a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32Z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-brand-200 ring-1 ring-inset ring-white/10 transition hover:bg-brand-600 hover:text-white">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.58 7.19a2.5 2.5 0 0 0-1.76-1.77C18.25 5 12 5 12 5s-6.25 0-7.82.42a2.5 2.5 0 0 0-1.76 1.77A26.1 26.1 0 0 0 2 12a26.1 26.1 0 0 0 .42 4.81 2.5 2.5 0 0 0 1.76 1.77C5.75 19 12 19 12 19s6.25 0 7.82-.42a2.5 2.5 0 0 0 1.76-1.77A26.1 26.1 0 0 0 22 12a26.1 26.1 0 0 0-.42-4.81ZM10 15.02V8.98L15.2 12 10 15.02Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Colegio</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#nosotros" class="text-brand-200/80 transition hover:text-white">Nuestra propuesta</a></li>
+            <li><a href="#niveles" class="text-brand-200/80 transition hover:text-white">Niveles educativos</a></li>
+            <li><a href="#vida" class="text-brand-200/80 transition hover:text-white">Vida escolar</a></li>
+            <li><a href="#noticias" class="text-brand-200/80 transition hover:text-white">Noticias y eventos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Admisiones</h3>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li><a href="#admision" class="text-brand-200/80 transition hover:text-white">Proceso de admisión</a></li>
+            <li><a href="#contacto" class="text-brand-200/80 transition hover:text-white">Agenda una visita</a></li>
+            <li><a href="#contacto" class="text-brand-200/80 transition hover:text-white">Becas y descuentos</a></li>
+            <li><a href="#contacto" class="text-brand-200/80 transition hover:text-white">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-white">Contacto</h3>
+          <ul class="mt-5 space-y-3 text-sm text-brand-200/80">
+            <li>Av. Los Álamos 1250,<br />Miraflores, Lima</li>
+            <li><a href="tel:+5112345678" class="transition hover:text-white">(01) 234 5678</a></li>
+            <li><a href="mailto:admisiones@colegiohorizonte.edu" class="break-all transition hover:text-white">admisiones@colegiohorizonte.edu</a></li>
+            <li>Lun – Vie · 7:30 a.m. – 4:00 p.m.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-brand-300/70 sm:flex-row">
+        <p>© <span id="year">2026</span> Colegio Horizonte. Todos los derechos reservados.</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <a href="#" class="transition hover:text-white">Política de privacidad</a>
+          <a href="#" class="transition hover:text-white">Términos de uso</a>
+          <a href="#" class="transition hover:text-white">Libro de reclamaciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón volver arriba -->
+  <button id="back-to-top" type="button" aria-label="Volver arriba"
+    class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 place-items-center rounded-full bg-brand-600 text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-1 hover:bg-brand-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ---------- Menú móvil ---------- */
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('icon-open');
+      const iconClose = document.getElementById('icon-close');
+
+      function closeMenu() {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menú de navegación');
+      }
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          menuToggle.setAttribute('aria-expanded', 'true');
+          menuToggle.setAttribute('aria-label', 'Cerrar menú de navegación');
+        }
+      });
+
+      document.querySelectorAll('.mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      /* ---------- Header con fondo al hacer scroll ---------- */
+      const navbar = document.getElementById('navbar');
+      const backToTop = document.getElementById('back-to-top');
+
+      function onScroll() {
+        if (window.scrollY > 24) {
+          navbar.classList.add('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.remove('border-transparent');
+        } else {
+          navbar.classList.remove('border-slate-200', 'bg-white/85', 'shadow-card', 'backdrop-blur-lg');
+          navbar.classList.add('border-transparent');
+        }
+
+        if (window.scrollY > 500) {
+          backToTop.classList.remove('hidden');
+          backToTop.classList.add('grid');
+        } else {
+          backToTop.classList.add('hidden');
+          backToTop.classList.remove('grid');
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      /* ---------- Animación al hacer scroll ---------- */
+      const revealItems = document.querySelectorAll('.reveal');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealItems.forEach(function (item) { observer.observe(item); });
+      } else {
+        revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+      }
+
+      /* ---------- Contadores animados ---------- */
+      const counters = document.querySelectorAll('[data-count]');
+
+      function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        const suffix = el.getAttribute('data-suffix') || '';
+        const duration = 1600;
+        const start = performance.now();
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(target * eased).toLocaleString('es-PE') + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      if ('IntersectionObserver' in window) {
+        const counterObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              counterObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.6 });
+
+        counters.forEach(function (counter) { counterObserver.observe(counter); });
+      } else {
+        counters.forEach(animateCounter);
+      }
+
+      /* ---------- Formulario de contacto ---------- */
+      const form = document.getElementById('contact-form');
+      const successMessage = document.getElementById('form-success');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        // Aquí se conectaría con un backend o servicio de correo.
+        successMessage.classList.remove('hidden');
+        successMessage.classList.add('flex');
+        form.reset();
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        setTimeout(function () {
+          successMessage.classList.add('hidden');
+          successMessage.classList.remove('flex');
+        }, 8000);
+      });
+
+      /* ---------- Año dinámico ---------- */
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
